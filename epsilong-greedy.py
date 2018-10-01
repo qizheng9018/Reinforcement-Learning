@@ -43,7 +43,6 @@ def epsilon_algorithm(means, num_sims, horizon, n_arms, flag):
             value = values[chosen_arm]
             new_value = ((n-1) / float(n)) * value + (1 / float(n)) * reward 
             values[chosen_arm] = new_value
-
     return cumulative_rewards
 
 def UCB_algorithm(means, num_sims, horizon, n_arms):
@@ -79,12 +78,14 @@ def UCB_algorithm(means, num_sims, horizon, n_arms):
             else:
                 cumulative_rewards[index] = cumulative_rewards[index - 1] + reward            
     return cumulative_rewards
+
 results= epsilon_algorithm(means, 100, 1000, n_arms, 0)
 results_1 = epsilon_algorithm(means, 100, 1000, n_arms, 1)
 results_2 = UCB_algorithm(means, 100, 1000, n_arms)
 result = [0.0 for i in range(1000)]
 result_1 = [0.0 for i in range(1000)]
 result_2 = [0.0 for i in range(1000)]
+
 for i in range(100):
     a = 1000*i
     for j in range(1000):
